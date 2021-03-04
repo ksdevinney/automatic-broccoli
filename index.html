@@ -8,11 +8,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!--flex to arrange the page-->
+    <div id="container"></div>
     <h1>Welcome to the quiz!</h1>
-    <!--Div to hold the quiz-->
-    <div id="quiz">
-        <!--flex box to hold questions-->
-        <div class="container">Questions</div>
+        <div id="quiz">Questions</div>
+        <div id="question"></div>
+        <div id="choices">
+            <div class="choice" id="A"></div>
+            <div class="choice" id="B"></div>
+            <div class="choice" id="C"></div>
+        </div>
     </div>
     <!--Timer-->
     <span id="timer"></span>
@@ -21,6 +26,7 @@
     <!--Submit button-->
     <button id="submit">Submit</button>
     <!--Score when quiz is finished-->
-    <div id="results></div>
+    <div id="results"></div>
+    <script src="script.js"></script>
 </body>
 </html>
