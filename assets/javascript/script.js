@@ -93,6 +93,7 @@ submitButton.addEventListener("click" , gameEnd);
 function gameEnd() {
     rightAnswers = 3;    
     userInitials = prompt("Enter your name to save your score!");
+    localStorage.setItem("winner", userInitials);
     console.log(userInitials, rightAnswers);
 }
 
