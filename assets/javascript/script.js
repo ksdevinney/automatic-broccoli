@@ -12,7 +12,6 @@ var choiceB = document.getElementById("B");
 var choiceC = document.getElementById("C");
 
 var timerCount;
-var rightAnswers;
 var userInitials;
 var displayQuestion;
 
@@ -23,7 +22,7 @@ const jsQuestions = [
     {
         question: "Choose a number.",
         answers: {
-            a: "1", 
+            a: "correct", 
             b: "threve" ,
             c: "hot dog"
         },
@@ -33,7 +32,7 @@ const jsQuestions = [
         question: "Choose a number.",
         answers: {
             a: "1", 
-            b: "threve" ,
+            b: "correct" ,
             c: "hot dog"
         },
         correctAnswer: "b"
@@ -43,7 +42,7 @@ const jsQuestions = [
         answers: {
             a: "1", 
             b: "threve" ,
-            c: "hot dog"
+            c: "correct"
         },
         correctAnswer: "c"
     }
@@ -63,6 +62,25 @@ function loadQuestion() {
     choiceA.textContent = currentQuestion.answers.a;
     choiceB.textContent = currentQuestion.answers.b;
     choiceC.textContent = currentQuestion.answers.c;
+}
+
+choiceA.addEventListener("click" , function() { checkAnswer('a') });
+choiceB.addEventListener("click" , function() { checkAnswer('b') });
+choiceC.addEventListener("click" , function() { checkAnswer('c') });
+
+function checkAnswer(answer) {
+    let currentQuestion = jsQuestions[displayQuestion];
+    if (answer == currentQuestion.correctAnswer){
+        rightAnswers++;
+    } else {
+        timerCount -= 5;
+    }
+    displayQuestion++;
+    if (displayQuestion < jsQuestions.length) {
+        loadQuestion();
+    } else {
+        gameEnd();
+    }
 }
 
 function startTimer() {
@@ -95,14 +113,14 @@ startButton.addEventListener("click", buildQuiz);
 
 
 //init is called when the page loads
-// function init() {
-//     buildQuiz();
-// }
+function init() {
+    buildQuiz();
+}
 
 submitButton.addEventListener("click" , gameEnd);
 
 function gameEnd() {
-    rightAnswers = 3;    
+    // rightAnswers = 3;    
     userInitials = prompt("Enter your name to save your score!");
     localStorage.setItem("winner", userInitials);
     console.log(userInitials, rightAnswers);
