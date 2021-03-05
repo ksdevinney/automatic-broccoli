@@ -7,10 +7,16 @@ var timerElement = document.getElementById("timer");
 var questionEl = document.getElementById("question");
 var choiceEl = document.getElementById("choices");
 var timer = document.getElementById("timer");
+var choiceA = document.getElementById("A");
+var choiceB = document.getElementById("B");
+var choiceC = document.getElementById("C");
 
 var timerCount;
 var rightAnswers;
 var userInitials;
+var displayQuestion;
+
+let rightAnswers = 0;
 
 //questions
 const jsQuestions = [
@@ -43,15 +49,20 @@ const jsQuestions = [
     }
 ]
 
-function loadQuestion () {
-    quizContainer.textContent = jsQuestions[Math.floor(Math.random() * jsQuestions.length)];
-
-}
-
 function buildQuiz() {
     startTimer();
+    displayQuestion = 0;
     loadQuestion();
     timerCount = 10;
+}
+
+function loadQuestion() {
+    let currentQuestion = jsQuestions[displayQuestion];
+
+    questionEl.textContent = currentQuestion.question;
+    choiceA.textContent = currentQuestion.answers.a;
+    choiceB.textContent = currentQuestion.answers.b;
+    choiceC.textContent = currentQuestion.answers.c;
 }
 
 function startTimer() {
@@ -84,9 +95,9 @@ startButton.addEventListener("click", buildQuiz);
 
 
 //init is called when the page loads
-function init() {
-    buildQuiz();
-}
+// function init() {
+//     buildQuiz();
+// }
 
 submitButton.addEventListener("click" , gameEnd);
 
