@@ -1,4 +1,4 @@
-//variables
+//variables from html
 var startButton = document.getElementById("start");
 var quizContainer = document.getElementById("quiz");
 var resultsContainer = document.getElementById('results');
@@ -75,17 +75,21 @@ const jsQuestions = [
     }
 ]
 
+
 function buildQuiz() {
     startTimer();
+    //start with first question in array
     displayQuestion = 0;
     loadQuestion();
-    timerCount = 10;
+    timerCount = 30;
 }
 
 function loadQuestion() {
+    //game cannot be restarted while it is running
     startButton.disabled = true;
     let currentQuestion = jsQuestions[displayQuestion];
 
+    //questions and answer choices
     questionEl.textContent = currentQuestion.question;
     choiceA.textContent = currentQuestion.answers.a;
     choiceB.textContent = currentQuestion.answers.b;
@@ -96,11 +100,14 @@ choiceA.addEventListener("click" , function() { checkAnswer('a') });
 choiceB.addEventListener("click" , function() { checkAnswer('b') });
 choiceC.addEventListener("click" , function() { checkAnswer('c') });
 
+//checks answers
 function checkAnswer(answer) {
     let currentQuestion = jsQuestions[displayQuestion];
+    //adds to rightAnswers variable if correct
     if (answer == currentQuestion.correctAnswer){
         rightAnswers++;
     } else {
+        //deducts time if incorrect
         timerCount -= 5;
     }
     displayQuestion++;
@@ -108,7 +115,7 @@ function checkAnswer(answer) {
         loadQuestion();
     } else {
         //alert instead of asking for initials
-        alert("Your score is " + rightAnswers + "!");
+        alert("Your score is " + rightAnswers + "! Great job!");
         gameEnd();
     }
 }
@@ -133,11 +140,13 @@ function startTimer() {
 startButton.addEventListener("click", buildQuiz);
 
 //game ends
+//prompts for name input
 function gameEnd() {
     userInitials = prompt("Enter your name to save your score!");
     //user inputs initials
     //score and initials stored in local storage
     localStorage.setItem("winner" , userInitials);
     localStorage.setItem("score" , rightAnswers);
+    //allows start button to be clicked
     startButton.disabled = false;
 }
