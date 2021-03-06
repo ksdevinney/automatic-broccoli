@@ -2,7 +2,7 @@
 
 ## Description
 
-![Quiz preview] (/assets/images/quiz-preview.png)
+![Quiz preview] (assets/images/quiz-preview.png)
 
 This is a quiz application created in JavaScript. When the user clicks that Start button, questions about JavaScript will appear on the page. When the first question loads, a timer starts counting down from 60. The user will try to answer all the questions before time runs out. However, if a question is answered incorrectly, 10 seconds are deducted from the timer.
 
