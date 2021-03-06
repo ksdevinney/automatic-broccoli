@@ -16,6 +16,6 @@ High scores and names inputted by the user are stored in the browser's local sto
 
 ## How to Access
 
-The application is deployed on GitHub pages, found here:
+The application is deployed on GitHub pages, found [here](https://ksdevinney.github.io/automatic-broccoli/).
 
 
