@@ -1,6 +1,5 @@
 //variables
 var startButton = document.getElementById("start");
-var submitButton = document.getElementById("submit");
 var quizContainer = document.getElementById("quiz");
 var resultsContainer = document.getElementById('results');
 var timerElement = document.getElementById("timer");
@@ -18,63 +17,61 @@ var displayQuestion;
 
 let rightAnswers = 0;
 
-submitButton.disabled = true;
-
 //questions
 const jsQuestions = [
     {
-        question: "Choose a number.",
+        question: "Who invented JavaScript?",
         answers: {
-            a: "correct", 
-            b: "threve" ,
-            c: "hot dog"
+            a: "Brendan Eich", 
+            b: "Bill Gates" ,
+            c: "George Washington"
         },
         correctAnswer: "a"
     },
     {
-        question: "Choose a number.",
+        question: "What is the maximum number of values a single JavaScript variable can hold?",
         answers: {
             a: "1", 
-            b: "correct" ,
-            c: "hot dog"
+            b: "4,294,967,295" ,
+            c: "200,000"
         },
         correctAnswer: "b"
     },
     {
-        question: "Choose a number.",
+        question: "Which of the following is not a primitive variable type?",
         answers: {
-            a: "1", 
-            b: "threve" ,
-            c: "correct"
+            a: "Boolean", 
+            b: "String" ,
+            c: "Bit"
         },
         correctAnswer: "c"
     },
     {
-        question: "Choose a number.",
+        question: "What does API stand for?",
         answers: {
-            a: "1", 
-            b: "threve" ,
-            c: "correct"
+            a: "A Pretty Icicle", 
+            b: "Angular Program Intervention" ,
+            c: "Application Programming Interface"
         },
         correctAnswer: "c"
     },
     {
-        question: "Choose a number.",
+        question: "What is the most popular JavaScript library?",
         answers: {
-            a: "1", 
-            b: "threve" ,
-            c: "correct"
+            a: "Vanilla", 
+            b: "jQuery" ,
+            c: "Bootstrap"
         },
-        correctAnswer: "c"
+        correctAnswer: "b"
     },
     {
-        question: "Choose a number.",
+        question: "Which of the following is a conditional statement used in JavaScript?",
         answers: {
-            a: "1", 
-            b: "threve" ,
-            c: "correct"
+            a: "If then", 
+            b: "If else" ,
+            c: "If so"
         },
-        correctAnswer: "c"
+        correctAnswer: "b"
     }
 ]
 
@@ -83,10 +80,10 @@ function buildQuiz() {
     displayQuestion = 0;
     loadQuestion();
     timerCount = 10;
-    submitButton.disabled = false;
 }
 
 function loadQuestion() {
+    startButton.disabled = true;
     let currentQuestion = jsQuestions[displayQuestion];
 
     questionEl.textContent = currentQuestion.question;
@@ -126,6 +123,7 @@ function startTimer() {
         // Clears interval
         clearInterval(timer);
         alert("Game over!");
+        gameEnd();
       }
     }, 1000);
   }
@@ -134,19 +132,12 @@ function startTimer() {
 //display first question on start
 startButton.addEventListener("click", buildQuiz);
 
-//init is called when the page loads
-// function init() {
-//     buildQuiz();
-// }
-
-submitButton.addEventListener("click" , gameEnd);
-
 //game ends
 function gameEnd() {
     userInitials = prompt("Enter your name to save your score!");
     //user inputs initials
+    //score and initials stored in local storage
     localStorage.setItem("winner" , userInitials);
     localStorage.setItem("score" , rightAnswers);
+    startButton.disabled = false;
 }
-
-//score is stored in local storage
