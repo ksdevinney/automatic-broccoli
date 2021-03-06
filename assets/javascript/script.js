@@ -10,12 +10,15 @@ var timer = document.getElementById("timer");
 var choiceA = document.getElementById("A");
 var choiceB = document.getElementById("B");
 var choiceC = document.getElementById("C");
+var scoresEl = document.getElementById("winners");
 
 var timerCount;
 var userInitials;
 var displayQuestion;
 
 let rightAnswers = 0;
+
+submitButton.disabled = true;
 
 //questions
 const jsQuestions = [
@@ -45,6 +48,33 @@ const jsQuestions = [
             c: "correct"
         },
         correctAnswer: "c"
+    },
+    {
+        question: "Choose a number.",
+        answers: {
+            a: "1", 
+            b: "threve" ,
+            c: "correct"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Choose a number.",
+        answers: {
+            a: "1", 
+            b: "threve" ,
+            c: "correct"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Choose a number.",
+        answers: {
+            a: "1", 
+            b: "threve" ,
+            c: "correct"
+        },
+        correctAnswer: "c"
     }
 ]
 
@@ -53,6 +83,7 @@ function buildQuiz() {
     displayQuestion = 0;
     loadQuestion();
     timerCount = 10;
+    submitButton.disabled = false;
 }
 
 function loadQuestion() {
@@ -79,6 +110,8 @@ function checkAnswer(answer) {
     if (displayQuestion < jsQuestions.length) {
         loadQuestion();
     } else {
+        //alert instead of asking for initials
+        alert("Your score is " + rightAnswers + "!");
         gameEnd();
     }
 }
@@ -88,16 +121,8 @@ function startTimer() {
     timer = setInterval(function() {
       timerCount--;
       timerElement.textContent = timerCount;
-    //   if (timerCount >= 0) {
-    //     // Tests if win condition is met
-    //     if (isWin && timerCount > 0) {
-    //       // Clears interval and stops timer
-    //       clearInterval(timer);
-    //       winGame();
-    //     }
-    //   }
-    //   // Tests if time has run out
-      if (timerCount === 0) {
+    // Tests if time has run out
+      if (timerCount <= 0) {
         // Clears interval
         clearInterval(timer);
         alert("Game over!");
@@ -109,36 +134,19 @@ function startTimer() {
 //display first question on start
 startButton.addEventListener("click", buildQuiz);
 
-//timer starts as first question is displayed
-
-
 //init is called when the page loads
-function init() {
-    buildQuiz();
-}
+// function init() {
+//     buildQuiz();
+// }
 
 submitButton.addEventListener("click" , gameEnd);
 
+//game ends
 function gameEnd() {
-    // rightAnswers = 3;    
     userInitials = prompt("Enter your name to save your score!");
-    localStorage.setItem("winner", userInitials);
-    console.log(userInitials, rightAnswers);
+    //user inputs initials
+    localStorage.setItem("winner" , userInitials);
+    localStorage.setItem("score" , rightAnswers);
 }
 
-//pick an answer
-//if it is right, some sort of notification (answer turns green?)
-
-//if it is wrong, notification (answer turns red?)
-//timer deducts 5 seconds
-
-//game ends when all questions are answered
-//or timer hits zero
-
-//game ends
-
 //score is stored in local storage
-
-//user inputs initials
-
-//score and initials are displayed
