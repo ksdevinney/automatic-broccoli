@@ -143,6 +143,7 @@ startButton.addEventListener("click", buildQuiz);
 //prompts for name input
 function gameEnd() {
     userInitials = prompt("Enter your name to save your score!");
+    clearInterval(timer);
     //user inputs initials
     //score and initials stored in local storage
     localStorage.setItem("winner" , userInitials);
