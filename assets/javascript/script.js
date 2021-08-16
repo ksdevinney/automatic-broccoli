@@ -1,19 +1,19 @@
 //variables from html
-var startButton = document.getElementById("start");
-var quizContainer = document.getElementById("quiz");
-var resultsContainer = document.getElementById('results');
-var timerElement = document.getElementById("timer");
-var questionEl = document.getElementById("question");
-var choiceEl = document.getElementById("choices");
-var timer = document.getElementById("timer");
-var choiceA = document.getElementById("A");
-var choiceB = document.getElementById("B");
-var choiceC = document.getElementById("C");
-var scoresEl = document.getElementById("winners");
+let startButton = document.getElementById("start");
+// let quizContainer = document.getElementById("quiz");
+let resultsContainer = document.getElementById('results');
+let timerElement = document.getElementById("timer");
+let questionEl = document.getElementById("question");
+let choiceEl = document.getElementById("choices");
+let timer = document.getElementById("timer");
+let choiceA = document.getElementById("A");
+let choiceB = document.getElementById("B");
+let choiceC = document.getElementById("C");
+let scoresEl = document.getElementById("winners");
 
-var timerCount;
-var userInitials;
-var displayQuestion;
+let timerCount;
+let userInitials;
+let displayQuestion;
 
 let rightAnswers = 0;
 

@@ -1,11 +1,11 @@
 body {
-    background-color: lightsteelblue;
+    background-color: #C4D7F2;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: #5A5353;
+    color: #776871;
     text-align: center;
-    margin: auto;
+    /* margin: auto;
     width: 50%;
-    padding: 10px;
+    padding: 10px; */
 }
 
 a:link {
@@ -14,4 +14,10 @@ a:link {
 
 a:visited {
     color: #776274; 
+}
+
+#container {
+    background-color: darksalmon;
+    width: 100%;
+    color: #776871;
 }
